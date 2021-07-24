@@ -6,8 +6,6 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-    # if req.path.match(/test/) 
-    #   return [200, { 'Content-Type' => 'application/json' }, [ {:message => "test response!"}.to_json ]]
 
     if req.path.match(/owners/) && req.post?
       data = JSON.parse(req.body.read) #code to unpackage the stringifiy JSON
@@ -24,7 +22,7 @@ class Application
           }.to_json]]
       end
 
-    elsif req.delete?
+    elsif req.delete?cd
       # binding.pry
 
       id = req.path.split("/vehicles/").last
